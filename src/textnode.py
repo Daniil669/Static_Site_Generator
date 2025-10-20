@@ -1,4 +1,5 @@
 from enum import Enum
+from leafnode import LeafNode
 
 class TextType(Enum):
     PLAIN_TEXT = "plain"
@@ -30,3 +31,22 @@ class TextNode:
     
     def __repr__(self) -> str:
         return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
+    
+
+def text_node_to_htlm_node(text_node: TextNode) -> LeafNode:
+    match(text_node.text_type):
+        case TextType.PLAIN_TEXT:
+            return LeafNode(None, text_node.text)
+        case TextType.BOLD_TEXT:
+            return LeafNode("b", text_node.text)
+        case TextType.ITALIC_TEXT:
+            return LeafNode("i", text_node.text)
+        case TextType.CODE_TEXT:
+            return LeafNode("code", text_node.text)
+        case TextType.LINK:
+            return LeafNode("a", text_node.text, {"href": text_node.url})
+        case TextType.IMAGE:
+            return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
+        case _:
+            # raise Exception("Uknown text type")
+            raise ValueError(f"Invlid text type: {text_node.text_type}")
