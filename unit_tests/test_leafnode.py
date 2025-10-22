@@ -1,4 +1,7 @@
 import unittest
+from import_setup import add_src_to_path
+
+add_src_to_path()
 from leafnode import LeafNode
 
 class TestLeafNode(unittest.TestCase):
