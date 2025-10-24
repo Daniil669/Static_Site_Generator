@@ -1,5 +1,4 @@
 from enum import Enum
-from htmlnode import HTMLNode
 # import re
 
 class BlockType(Enum):
@@ -11,10 +10,12 @@ class BlockType(Enum):
     ORDERED_LIST = "ordered list"
 
 def markdown_to_blocks(markdown: str) -> list[str]:
+    markdown_blocks = markdown.split("\n\n") 
     blocks: list[str] = []
-    for block in markdown.split("\n\n"):
+    for block in markdown_blocks:
         if block != "":
             blocks.append(block.strip())
+            # blocks.append('\n'.join([item.strip() for item in block.split('\n')]))
     return blocks
 
 # def is_ordered_list(text: str) -> bool:
@@ -61,7 +62,3 @@ def block_to_block_type(markdown_text: str) -> BlockType:
                 return BlockType.PARAGRAPH
         return BlockType.ORDERED_LIST
     return BlockType.PARAGRAPH
-
-
-def markdown_to_html_node(markdown_text: str) -> HTMLNode:
-    pass
