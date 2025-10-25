@@ -5,9 +5,6 @@ from textnode import TextNode, TextType, text_node_to_htlm_node
 from parentnode import ParentNode
 from leafnode import LeafNode
 
-def clear_markdown_front_char(text: str) -> str:
-    return " ".join(text.split(" ")[1:])
-
 def text_to_children(text: str) -> list[HTMLNode]:
     text_nodes: list[TextNode] = text_to_textnodes(text)
     children: list[LeafNode] = []
@@ -20,38 +17,41 @@ def create_list_items(text: str) -> list[HTMLNode]:
     children: list[HTMLNode] = []
     list_items: list[str] = text.split("\n")
     for list_item in list_items:
-        list_item = clear_markdown_front_char(list_item)
-        children.append(ParentNode("li", text_to_children(list_item)))
+        content = " ".join(list_item.split(" ")[1:])
+        children.append(ParentNode("li", text_to_children(content)))
     return children
 
 def heading_to_html_node(heading: str) -> ParentNode:
-    tag: str = ""
-    if text.startswith("# "):
-        tag = "h1"
-    elif text.startswith("## "):
-        tag = "h2"
-    elif text.startswith("### "):
-        tag = "h3"
-    elif text.startswith("#### "):
-        tag = "h4"
-    elif text.startswith("##### "):
-        tag = "h5"
-    else:
-        tag = "h6"
-    text = clear_markdown_front_char(text)
-    children: list[LeafNode] = text_to_children(text)
+    hash_tag: int = 0
+    for char in heading:
+        if char == "#":
+            hash_tag += 1
+        if char == " ":
+            break
+    if hash_tag + 1 >= len(heading):
+        raise ValueError(f"Invalid number of hashtag symbols")
+    tag: str = f"h{hash_tag}"
+    children: list[LeafNode] = text_to_children(heading[hash_tag + 1:])
     return ParentNode(tag, children)
 
 def code_to_html_node(text: str) -> ParentNode:
+    if not text.startswith("```") or not text.endswith("```"):
+        raise ValueError("Invalid code block")
     tag:  str = "pre"
-    text_node: TextNode = TextNode(text.replace("```", "").replace("\n", "", 1), TextType.CODE_TEXT)
-    code_node: LeafNode = text_node_to_htlm_node(text_node)
+    text_node: TextNode = TextNode(text[4:-3], TextType.PLAIN_TEXT)
+    code_node: ParentNode = ParentNode("code", [text_node_to_htlm_node(text_node)])
     return ParentNode(tag, [code_node])
 
 def quote_to_html_node(text: str) -> ParentNode:
-    tag: str = "backquote"
-    text = clear_markdown_front_char(text)
-    children: list[LeafNode] = text_to_children(text)
+    lines: list[str] = text.split("\n")
+    quotes: list[str] = []
+    for line in lines:
+        if not line.startswith("> "):
+            raise ValueError("Invalid quote block")
+        quotes.append(line.lstrip("> ").strip())
+    tag: str = "blockquote"
+    content = " ".join(quotes)
+    children: list[LeafNode] = text_to_children(content)
     return ParentNode(tag, children)
 
 def lists_to_html_node(text: str, list_type: str) -> ParentNode:
