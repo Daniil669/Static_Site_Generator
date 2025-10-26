@@ -1,4 +1,5 @@
 from htmlnode import HTMLNode
+from __future__ import annotations
 
 class ParentNode(HTMLNode):
     def __init__(self, tag: str, children: list[HTMLNode], props: dict[str, str | None] | None = None) -> None:

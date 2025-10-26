@@ -1,6 +1,6 @@
 import os
 from copying_static import copy_from_static_to_public
-from page_generator import generate_page
+from page_generator import generate_pages_recursive
 
 template_path: str = "./template.html"
 dir_path_public: str = "./public"
@@ -12,7 +12,9 @@ def main() -> None:
     try:
 
         copy_from_static_to_public(dir_path_static, dir_path_public)
-        generate_page(dir_path_content, template_path, dir_path_public)
+
+        print("Generating content...")
+        generate_pages_recursive(dir_path_content, template_path, dir_path_public)
 
     except Exception as e:
         print(f"Error: {e}")
