@@ -9,7 +9,7 @@ def extract_title(markdown: str) -> str:
             return block[2:]
     raise ValueError("No title found")
 
-def generate_page(from_path: str, template_path: str, dest_path: str) -> None:
+def generate_page(from_path: str, template_path: str, dest_path: str, base_path: str) -> None:
 
     if not os.path.exists(from_path):
         raise ValueError(f"source path doesn't exist")
@@ -30,19 +30,19 @@ def generate_page(from_path: str, template_path: str, dest_path: str) -> None:
     content: str = html_node.to_html()
     title: str = extract_title(md_text)
 
-    html_page: str = html_text.replace("{{ Title }}", title).replace("{{ Content }}", content)
+    html_page: str = html_text.replace("{{ Title }}", title).replace("{{ Content }}", content).replace('href="/', f'href="{base_path}').replace('src="/', f'src="{base_path}')
 
     with open(dest_path_html, "w") as index_html:
         index_html.write(html_page)
     
 
-def generate_pages_recursive(content_path: str, template_path: str, dest_path: str) -> None:
+def generate_pages_recursive(content_path: str, template_path: str, dest_path: str, base_path: str) -> None:
     content_files: list[str] = os.listdir(content_path)
     for file in content_files:
         from_path = os.path.join(content_path, file)
         if os.path.isfile(from_path):
-            generate_page(from_path, template_path, dest_path)
+            generate_page(from_path, template_path, dest_path, base_path)
         else:
             new_dest_path = os.path.join(dest_path, file)
             os.mkdir(new_dest_path)
-            generate_pages_recursive(from_path, template_path, new_dest_path)
+            generate_pages_recursive(from_path, template_path, new_dest_path, base_path)
