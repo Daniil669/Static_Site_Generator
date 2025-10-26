@@ -46,9 +46,9 @@ def quote_to_html_node(text: str) -> ParentNode:
     lines: list[str] = text.split("\n")
     quotes: list[str] = []
     for line in lines:
-        if not line.startswith("> "):
+        if not line.startswith(">"):
             raise ValueError("Invalid quote block")
-        quotes.append(line.lstrip("> ").strip())
+        quotes.append(line.lstrip(">").strip())
     tag: str = "blockquote"
     content = " ".join(quotes)
     children: list[LeafNode] = text_to_children(content)

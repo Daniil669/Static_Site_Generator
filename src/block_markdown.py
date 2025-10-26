@@ -46,9 +46,9 @@ def block_to_block_type(markdown_text: str) -> BlockType:
         return BlockType.HEADING
     if markdown_text.startswith("```") and markdown_text.endswith("```"):
         return BlockType.CODE
-    if markdown_text.startswith("> "):
+    if markdown_text.startswith(">"):
         for line in lines:
-            if not line.startswith("> "):
+            if not line.startswith(">"):
                 return BlockType.PARAGRAPH
         return BlockType.QUOTE
     if markdown_text.startswith(("- ", "* ")):
