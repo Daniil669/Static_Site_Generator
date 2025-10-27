@@ -1,9 +1,10 @@
-# Contact the Author
+# Contact Me
 
-[< Back Home](/)
+Hey there, retro gamer! 🎮
 
-Give me a call anytime to chat about Tolkien!
+If you'd like to collaborate, chat about classic games, or check out my work — reach out below.
 
-`555-555-5555`
+- 🕹️ Visit my [GitHub](https://github.com/Daniil669)
+- 💬 Or send a pull request and say hi!
 
-**"Váya márië."**
+Go back to the [Home Page](/)

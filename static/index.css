@@ -1,130 +1,177 @@
+/* === Retro Arcade Theme === */
 body {
-  background-color: #1f1c25;
-  color: #f0e6d1;
-  font-family: "Luminari", "Georgia", serif;
-  line-height: 1.7;
+  background-color: #0d0d0f;
+  color: #00ffcc;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  line-height: 1.6;
   margin: 0;
   padding: 20px;
-  max-width: 800px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  background-image: radial-gradient(circle at 20% 20%, #121212, #050505);
+  text-shadow: 0 0 6px rgba(0, 255, 204, 0.4);
 }
 
+/* Bold */
 b {
   font-weight: 900;
+  color: #00e5ff;
+  text-shadow: 0 0 8px #00e5ff;
 }
 
+/* Headings */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: #dda15e;
+  color: #ff006e;
+  text-shadow: 0 0 8px #ff00c8, 0 0 16px #ff00c8;
   margin-top: 24px;
   margin-bottom: 16px;
-  text-shadow: 2px 2px 4px #000;
+  letter-spacing: 1px;
 }
 
 h1 {
-  font-size: 2.5em;
-}
-
-h2 {
   font-size: 2em;
 }
 
+h2 {
+  font-size: 1.6em;
+}
+
 h3 {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 h4,
 h5,
 h6 {
-  font-size: 1.2em;
+  font-size: 1.1em;
+  color: #ff66cc;
 }
 
+/* Links */
 a {
-  color: #e0a96d;
+  color: #00ffcc;
   text-decoration: none;
-  border-bottom: 2px solid #e0a96d;
+  border-bottom: 2px dotted #00ffcc;
+  transition: all 0.3s ease;
 }
 
 a:hover {
-  color: #f4a261;
-  border-color: #f4a261;
+  color: #ff00c8;
+  border-color: #ff00c8;
+  text-shadow: 0 0 8px #ff00c8;
 }
 
+/* Lists */
 ul,
 ol {
   padding-left: 30px;
+  color: #80ffd4;
 }
 
+/* Code blocks */
 code {
-  background-color: #3c3c42;
-  border-radius: 6px;
-  color: #e9c46a;
+  background-color: #1a1a22;
+  border-radius: 4px;
+  color: #ffcc00;
   padding: 0.4em 0.6em;
   font-family: "Courier New", monospace;
+  text-shadow: 0 0 6px rgba(255, 204, 0, 0.6);
+}
+
+pre {
+  background-color: #111;
+  border-radius: 6px;
+  padding: 1em;
+  overflow: auto;
+  box-shadow: 0 0 10px #00ffcc;
+  border: 1px solid #00ffcc;
 }
 
 pre code {
   padding: 0;
 }
 
-pre {
-  background-color: #3c3c42;
-  border-radius: 6px;
-  padding: 1em;
-  overflow: auto;
-  box-shadow: 2px 2px 6px #000;
-}
-
+/* Blockquotes */
 blockquote {
-  background-color: #2e2c35;
-  border-left: 4px solid #8d99ae;
+  background-color: #111117;
+  border-left: 4px solid #ff00c8;
   padding-left: 2em;
   margin-left: 0;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  padding-right: 0.5em;
-  color: #ddd;
+  padding: 0.8em 1em;
+  color: #ffb3ec;
   font-style: italic;
+  box-shadow: inset 0 0 10px #ff00c8;
 }
 
+/* Images */
 img {
   max-width: 100%;
   height: auto;
   border-radius: 6px;
-  border: 3px solid #3c3c42;
-  box-shadow: 3px 3px 6px #000;
+  border: 3px solid #00ffcc;
+  box-shadow: 0 0 12px #00ffcc;
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f1c25;
-  border-radius: 6px;
+  background: #0d0d0f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #3c3c42;
+  background-color: #00ffcc;
   border-radius: 6px;
-  border: 3px solid #1f1c25;
+  border: 3px solid #0d0d0f;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #5a5466;
+  background-color: #ff00c8;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3c3c42 #1f1c25;
+  scrollbar-color: #00ffcc #0d0d0f;
 }
 
 ::-webkit-scrollbar-corner {
-  background: #1f1c25;
+  background: #0d0d0f;
+}
+
+/* Links glow when active */
+a:active {
+  color: #ffcc00;
+  text-shadow: 0 0 8px #ffcc00;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1em;
+}
+
+/* Optional CRT effect overlay (for full retro feel) */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  opacity: 0.2;
 }

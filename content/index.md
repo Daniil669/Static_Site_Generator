@@ -1,44 +1,46 @@
-# Tolkien Fan Club
+# Retro Arcade Club
 
-![JRR Tolkien sitting](/images/tolkien.png)
+![Retro arcade room](/images/arcadehome.png)
 
-Here's the deal, **I like Tolkien**.
+Here's the deal, **I love retro games**.
 
-> "I am in fact a Hobbit in all but size."
+> "Old pixels, timeless fun."
 >
-> -- J.R.R. Tolkien
+> -- Every retro gamer
 
 ## Blog posts
 
-- [Why Glorfindel is More Impressive than Legolas](/blog/glorfindel)
-- [Why Tom Bombadil Was a Mistake](/blog/tom)
-- [The Unparalleled Majesty of "The Lord of the Rings"](/blog/majesty)
+- [Donkey Kong: The Birth of the Platformer](/blog/donkeykong)
+- [Pac-Man and the Art of the Chase](/blog/pacman)
+- [The Endless Impact of Space Invaders](/blog/spaceinvaders)
+- [Tetris: A Symphony of Falling Blocks](/blog/tetris)
 
-## Reasons I like Tolkien
+## Reasons I love retro games
 
-- You can spend years studying the legendarium and still not understand its depths
-- It can be enjoyed by children and adults alike
-- Disney _didn't ruin it_ (okay, but Amazon might have)
-- It created an entirely new genre of fantasy
+- They’re simple, challenging, and addictive  
+- The music stays in your head forever  
+- You can master them, but never _truly_ win  
+- They started everything modern gaming became  
 
-## My favorite characters (in order)
+## My favorite classics (in order)
 
-1. Gandalf
-2. Bilbo
-3. Sam
-4. Glorfindel
-5. Galadriel
-6. Elrond
-7. Thorin
-8. Sauron
-9. Aragorn
+1. Donkey Kong
+2. Pac-Man
+3. Space Invaders
+4. Tetris
+5. Galaga
+6. Pong
+7. Frogger
+8. Contra
+9. Metroid
 
-Here's what `elflang` looks like (the perfect coding language):
+Here's what `arcadelang` looks like (the perfect game loop):
 
 ```
-func main(){
-    fmt.Println("Aiya, Ambar!")
+while (player.lives > 0) {
+    start_game();
+    score++;
 }
 ```
 
-Want to get in touch? [Contact me here](/contact).
+Want to get in touch? [Contact me here](/contact)
